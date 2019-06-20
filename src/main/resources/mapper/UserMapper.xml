@@ -14,7 +14,7 @@
         WHERE userID = #{userID}
     </select>
 
-    <select id="selectUserByIdPassword">
+    <select id="selectUserByIdPassword" resultType="user">
         SELECT * FROM user
         WHERE userID = #{userID} AND userPassword = #{userPassword}
     </select>
