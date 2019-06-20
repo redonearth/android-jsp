@@ -11,7 +11,7 @@ public class UserService {
     @Autowired
     UserMapper userMapper;
 
-    void insertUser(User user) throws Exception {
+    User insertUser(User user) throws Exception {
         return userMapper.insertUser(user);
     }
 
