@@ -25,4 +25,8 @@ public class UserService {
     public List<User> selectUserByIdAndPassword(String userID, String userPassword) throws Exception {
         return userMapper.selectUserByIdAndPassword(userID, userPassword);
     }
+
+    public List<User> selectAllUsers() throws Exception {
+        return userMapper.selectAllUsers();
+    }
 }

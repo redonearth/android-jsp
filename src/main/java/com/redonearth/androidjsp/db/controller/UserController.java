@@ -4,7 +4,6 @@ import com.redonearth.androidjsp.db.dto.User;
 import com.redonearth.androidjsp.db.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,13 +19,18 @@ public class UserController {
         return userService.selectUserByIdAndPassword(userID, userPassword);
     }
 
-//    @RequestMapping("/UserRegister")
+    @RequestMapping(value="/UserValidate")
+    public List<User> UserValidate(@RequestParam String userID) throws Exception {
+        return userService.selectUserById(userID);
+    }
+
+//    @RequestMapping(value="/UserRegister")
 //    public String UserRegister() {
 //        return "UserRegister";
 //    }
 
-//    @RequestMapping("/UserValidate")
-//    public String UserValidate() {
-//        return "UserValidate";
-//    }
+    @RequestMapping(value="/UserList")
+    public List<User> UserList() throws Exception {
+        return userService.selectAllUsers();
+    }
 }

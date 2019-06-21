@@ -8,4 +8,5 @@ public interface UserMapper {
     public User insertUser(User user) throws Exception;
     public List<User> selectUserById(String userID) throws Exception;
     public List<User> selectUserByIdAndPassword(String userID, String userPassword) throws Exception;
+    public List<User> selectAllUsers() throws Exception;
 }
