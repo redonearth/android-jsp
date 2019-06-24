@@ -6,6 +6,10 @@ public class User {
     private String userPassword;
     private String userEmail;
 
+    public User() {
+        super();
+    }
+
     public String getUserID() {
         return userID;
     }
@@ -28,5 +32,14 @@ public class User {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID='" + userID + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                '}';
     }
 }
