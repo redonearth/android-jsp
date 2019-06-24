@@ -2,21 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.redonearth.androidjsp.repository.UserMapper">
+<mapper namespace="com.redonearth.androidjsp.db.mapper.UserMapper">
 
     <insert id="insertUser">
         INSERT INTO user
         VALUES (#{userID}, #{userPassword}, #{userEmail})
     </insert>
 
-    <select id="selectUserById" resultType="user">
+    <select id="selectUserById" resultType="com.redonearth.androidjsp.db.dto.User">
         SELECT * FROM user
         WHERE userID = #{userID}
     </select>
 
-    <select id="selectUserByIdPassword" resultType="user">
+    <select id="selectUserByIdAndPassword" resultType="com.redonearth.androidjsp.db.dto.User">
         SELECT * FROM user
         WHERE userID = #{userID} AND userPassword = #{userPassword}
+    </select>
+
+    <select id="selectAllUsers" resultType="com.redonearth.androidjsp.db.dto.User">
+        SELECT * FROM user
     </select>
 
 </mapper>
