@@ -1,5 +1,8 @@
 package com.redonearth.androidjsp.db.dto;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("user")
 public class User {
 
     private String userID;
