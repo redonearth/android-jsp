@@ -2,7 +2,7 @@ package com.redonearth.androidjsp.db.service;
 
 import com.redonearth.androidjsp.db.dto.User;
 import com.redonearth.androidjsp.db.mapper.UserMapper;
-import org.omg.CORBA.PUBLIC_MEMBER;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +18,11 @@ public class UserService {
         return userMapper.insertUser(user);
     }
 
-    public List<User> selectUserById(String userID) throws Exception {
+    public List<User> selectUserById(@Param("userID") String userID) throws Exception {
         return userMapper.selectUserById(userID);
     }
 
-    public List<User> selectUserByIdAndPassword(String userID, String userPassword) throws Exception {
+    public List<User> selectUserByIdAndPassword(@Param("userID") String userID, @Param("userPassword") String userPassword) throws Exception {
         return userMapper.selectUserByIdAndPassword(userID, userPassword);
     }
 
