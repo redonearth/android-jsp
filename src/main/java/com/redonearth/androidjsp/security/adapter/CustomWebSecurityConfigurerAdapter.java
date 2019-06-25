@@ -1,5 +1,6 @@
 package com.redonearth.androidjsp.security.adapter;
 
+import com.redonearth.androidjsp.handlers.CustomLoginiSuccessHandler;
 import com.redonearth.androidjsp.security.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @EnableWebSecurity
 public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
@@ -22,6 +24,11 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public AuthenticationSuccessHandler successHandler() {
+        return new CustomLoginiSuccessHandler("/");
+    }
+
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
@@ -30,7 +37,8 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().anyRequest().authenticated().and().formLogin();
+        http.csrf().disable().authorizeRequests().anyRequest()
+                .authenticated().and().formLogin().successHandler(successHandler());
     }
 
     @Override
