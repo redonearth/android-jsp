@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@MapperScan(basePackages = "com.redonearth.androidjsp.db.mapper")
+@MapperScan(basePackages = {"com.redonearth.androidjsp.db.mapper", "com.redonearth.androidjsp.security.mapper"})
 public class DatabaseConfig {
 
     @Bean
